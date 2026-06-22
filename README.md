@@ -1,4 +1,19 @@
-# 运行手册（README）
+# LLM 原理课 · 动画化 / LLM Fundamentals, Animated
+
+> 把一门 8 天的大语言模型原理讲义，做成 3Blue1Brown 风格的讲解动画（精确动态图示 + 中文旁白），用 Manim 社区版渲染。
+> An 8-day "how LLMs really work" course, turned into 3Blue1Brown-style explainer videos — precise animated diagrams with Chinese narration, rendered with Manim Community Edition.
+
+[![Manim](https://img.shields.io/badge/Manim-Community-blue.svg)](https://www.manim.community/)
+[![Python](https://img.shields.io/badge/Python-3.x-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Voiceover](https://img.shields.io/badge/TTS-edge--tts-6E4AFF.svg)](https://github.com/rany2/edge-tts)
+![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-D97757.svg)
+![Last commit](https://img.shields.io/github/last-commit/ivorylei/LLM-Learning.svg)
+
+**English in one breath:** Source-of-truth lecture notes live in `course/`; per-day storyboards in `storyboards/` (all 8 days drafted); each shot is one Manim scene in `scenes/`; narration is synthesized with `edge-tts`; `ffmpeg` stitches the per-day video into `final/`. The whole pipeline is meant to be driven by **Claude Code** following `CLAUDE.md`. Generated audio/video are **not** committed (see *成片分发* below) — clone, run `setup.sh`, and re-render.
+
+---
+
+## 运行手册（README）
 
 这是一个交接给本地 **Claude Code** 的项目包：把《从零理解大语言模型：8 天原理课》做成讲解动画。
 设计成"丢进文件夹 → 打开 Claude Code → 粘贴一句启动指令 → 它基本自己跑"。
@@ -80,3 +95,30 @@ final/           ← 每天拼接好的成片
 - **务必人工验收**：AI 写的 Manim 可能符号漂移、布局出界——每天成片你都过一眼（CLAUDE.md 已设为 checkpoint）。
 - **中文不需要 LaTeX**：Manim 的 `Text()` 直接用 Noto CJK 字体渲染中文；LaTeX 只为数学公式服务。这点 setup.sh 已处理好。
 - 改主意了想调风格/节奏，直接改 `CLAUDE.md` 第 6 节，后续所有镜都会跟着变。
+
+---
+
+## 七、成片分发（GitHub Releases，而非入库）
+
+仓库**默认不收录**生成的音视频（`renders/*.mp4`、`audio/*.mp3`、`final/*.mp4` 已写进 `.gitignore`），原因：
+
+- 视频是**大二进制、可重生**的产物——把它们塞进 git 历史会让仓库迅速膨胀且永远清不掉。
+- git-lfs 虽能存大文件，但**仍占用 GitHub 的存储/带宽配额**，且每个 clone 都要先装 `git lfs`，对"分发成片给人看"并不划算。
+
+因此每天的成片用 **GitHub Releases** 附件分发（不进 git 历史、有独立直链、可下载）：
+
+```bash
+# 方式 A：装了 gh CLI（brew install gh && gh auth login）后一行发布
+gh release create day3-v1 final/day3_注意力.mp4 \
+  --title "第3天 · 注意力机制" \
+  --notes "3Blue1Brown 风格讲解动画，约 2'53\"。"
+
+# 追加/更新某个已存在的 release 的附件
+gh release upload day3-v1 final/day3_注意力.mp4 --clobber
+```
+
+> 没装 gh 也可以：在仓库页 **Releases → Draft a new release**，把 `final/dayN_*.mp4` 拖进 *Attach binaries* 即可。
+>
+> 发布后建议回到本 README 的"目录速览"或新开一个"📺 成片下载"小节，贴上各天 release 的下载链接，方便观众直接取片。
+
+**什么时候才考虑 git-lfs**：只有当你确实需要让"源工程文件"（而不是成品视频）随仓库版本走——例如想对每镜 `.mp4` 做版本对比/回滚时。那种情况下再 `git lfs track "*.mp4"`；否则 Releases 是更轻的选择。
