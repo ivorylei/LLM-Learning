@@ -127,13 +127,13 @@ gh release upload day3-v1 final/day3_注意力.mp4 --clobber
 
 ## 八、许可 / License
 
-本项目**双许可**（dual-licensed），按内容性质分开授权：
+本项目按内容性质**分开授权**：
 
 | 部分 | 许可证 | 含义 |
 |---|---|---|
 | **代码**（`scenes/` Manim 脚本、`setup.sh` 等） | [MIT](./LICENSE) | 随便用/改/商用，保留版权声明即可 |
-| **课程内容与成片**（`course/`、`storyboards/`、旁白、`audio/`/`renders/`/`final/` 及 Releases 成片） | [CC BY 4.0](./LICENSE-CONTENT.md) | 可复制/演绎/商用，**唯一条件是署名** |
+| **课程内容与成片**（`course/`、`storyboards/`、旁白、`audio/`/`renders/`/`final/` 及 Releases 成片） | [保留所有权利](./LICENSE-CONTENT.md) | 公开仅供学习查阅；未经授权请勿复制/再发行/商用 |
 
-两者都只要求**保留署名**。复用时请注明原作者与本仓库链接。
-
-> Dual-licensed: **code under [MIT](./LICENSE)**, **content under [CC BY 4.0](./LICENSE-CONTENT.md)**. Both only require attribution.
+> ⚠️ 课程内容**引用/改编了第三方教材与图表**，其版权归原作者所有，因此内容整体**无法**做开放授权；详见 [`LICENSE-CONTENT.md`](./LICENSE-CONTENT.md)。代码部分（作者自有）仍为开放的 MIT。
+>
+> Code is **[MIT](./LICENSE)**; course content is **All Rights Reserved** (it references/adapts third-party materials) — public for study only, see [`LICENSE-CONTENT.md`](./LICENSE-CONTENT.md).
