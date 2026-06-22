@@ -1,0 +1,20 @@
+# Python 虚拟环境（由 setup.sh 重建，勿入库）
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Manim 渲染中间产物（可由 scenes/ 代码重新生成）
+media/
+
+# 生成的音视频成片（大二进制、可重生；保留各目录下的 README.txt 占位）
+renders/*.mp4
+audio/*.mp3
+audio/*.wav
+final/*.mp4
+
+# 临时 ffmpeg concat 列表
+*_list.txt
+
+# macOS
+.DS_Store
