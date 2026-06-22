@@ -122,3 +122,18 @@ gh release upload day3-v1 final/day3_注意力.mp4 --clobber
 > 发布后建议回到本 README 的"目录速览"或新开一个"📺 成片下载"小节，贴上各天 release 的下载链接，方便观众直接取片。
 
 **什么时候才考虑 git-lfs**：只有当你确实需要让"源工程文件"（而不是成品视频）随仓库版本走——例如想对每镜 `.mp4` 做版本对比/回滚时。那种情况下再 `git lfs track "*.mp4"`；否则 Releases 是更轻的选择。
+
+---
+
+## 八、许可 / License
+
+本项目**双许可**（dual-licensed），按内容性质分开授权：
+
+| 部分 | 许可证 | 含义 |
+|---|---|---|
+| **代码**（`scenes/` Manim 脚本、`setup.sh` 等） | [MIT](./LICENSE) | 随便用/改/商用，保留版权声明即可 |
+| **课程内容与成片**（`course/`、`storyboards/`、旁白、`audio/`/`renders/`/`final/` 及 Releases 成片） | [CC BY 4.0](./LICENSE-CONTENT.md) | 可复制/演绎/商用，**唯一条件是署名** |
+
+两者都只要求**保留署名**。复用时请注明原作者与本仓库链接。
+
+> Dual-licensed: **code under [MIT](./LICENSE)**, **content under [CC BY 4.0](./LICENSE-CONTENT.md)**. Both only require attribution.
