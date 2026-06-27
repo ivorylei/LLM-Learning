@@ -46,19 +46,24 @@
 
 ## 四、进度看板（完成一项就打 x）
 
+> **当前状态（2026-06-27）：八天成片已全部产出（`final/day1..day8_*.mp4`，均 1080p）。**
+> 第 1、3 天已验收通过；第 2、4、5、6、7、8 天等待验收。
+> 第 1 天已按反馈修复中文整句转场的"飞字"bug（`Transform`→淡出+淡入）并重渲重拼；
+> 该修复已固化为全局规则，见 `CLAUDE.md` 第 6 节与记忆 `cjk-transition-rule`。
+
 每天五个阶段：**脚本 → 画面(scenes 全部 -ql 跑通) → 配音(edge-tts) → 出片(-qh + ffmpeg 合轨) → 拼接成片(final/) → 我验收**。
 脚本已全部完成，故第一列默认打勾。
 
 | 天 | 脚本 | 画面跑通 | 配音 | 出片 | 成片 | 验收 |
 |---|---|---|---|---|---|---|
-| 3 ★ | [x] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 1 | [x] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 2 | [x] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 4 | [x] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 5 | [x] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 6 | [x] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 7 | [x] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 8 | [x] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| 3 ★ | [x] | [x] | [x] | [x] | [x] | [x] |
+| 1 | [x] | [x] | [x] | [x] | [x] | [x] |
+| 2 | [x] | [x] | [x] | [x] | [x] | [ ] |
+| 4 | [x] | [x] | [x] | [x] | [x] | [ ] |
+| 5 | [x] | [x] | [x] | [x] | [x] | [ ] |
+| 6 | [x] | [x] | [x] | [x] | [x] | [ ] |
+| 7 | [x] | [x] | [x] | [x] | [x] | [ ] |
+| 8 | [x] | [x] | [x] | [x] | [x] | [ ] |
 
 ---
 
@@ -67,23 +72,23 @@
 > 文件命名：`scenes/dayN_NN_slug.py`；类名见下。完成某镜的 `-ql` 跑通后，在此打 x。
 
 ### 第 1 天 · 大地图
-- [ ] 00 `Day1Title` (~7s)
-- [ ] 01 `NextTokenCore` (~30s)
-- [ ] 02 `TwoStages` (~35s)
-- [ ] 03 `OneFamily` (~25s)
-- [ ] 04 `MathIntuitions` (~40s)
-- [ ] 05 `Day1RealWorld` (~25s)
-- [ ] 06 `Day1Outro` (~10s)
+- [x] 00 `Day1Title` (10.4s)
+- [x] 01 `NextTokenCore` (25.0s)
+- [x] 02 `TwoStages` (33.4s)
+- [x] 03 `OneFamily` (27.0s)
+- [x] 04 `MathIntuitions` (36.6s)
+- [x] 05 `Day1RealWorld` (23.4s)
+- [x] 06 `Day1Outro` (11.3s)
 
 ### 第 2 天 · 文字变数字
-- [ ] 00 `Day2Title` (~7s)
-- [ ] 01 `Pipeline` (~20s)
-- [ ] 02 `Tokenization` (~30s)
-- [ ] 03 `TokenToID` (~20s)
-- [ ] 04 `Embedding` (~35s)
-- [ ] 05 `PositionalEncoding` (~25s)
-- [ ] 06 `Day2RealWorld` (~35s)
-- [ ] 07 `Day2Outro` (~10s)
+- [x] 00 `Day2Title` (14.9s)
+- [x] 01 `Pipeline` (11.1s)
+- [x] 02 `Tokenization` (19.9s)
+- [x] 03 `TokenToID` (11.0s)
+- [x] 04 `Embedding` (26.9s)
+- [x] 05 `PositionalEncoding` (19.7s)
+- [x] 06 `Day2RealWorld` (37.0s)
+- [x] 07 `Day2Outro` (13.8s)
 
 ### 第 3 天 · 注意力 ★试点
 - [ ] 00 `Day3Title` (~6s)
@@ -95,49 +100,49 @@
 - [ ] 06 `Day3Outro` (~12s)
 
 ### 第 4 天 · 拼装 GPT
-- [ ] 00 `Day4Title` (~7s)
-- [ ] 01 `BlockOverview` (~20s)
-- [ ] 02 `FeedForward` (~30s)
-- [ ] 03 `Residual` (~25s)
-- [ ] 04 `LayerNorm` (~20s)
-- [ ] 05 `StackToGPT` (~30s)
-- [ ] 06 `WhatAreParameters` (~25s)
-- [ ] 07 `Day4RealWorld` (~30s)
-- [ ] 08 `Day4Outro` (~10s)
+- [x] 00 `Day4Title` (11.9s)
+- [x] 01 `BlockOverview` (13.8s)
+- [x] 02 `FeedForward` (19.0s)
+- [x] 03 `Residual` (19.7s)
+- [x] 04 `LayerNorm` (11.6s)
+- [x] 05 `StackToGPT` (22.9s)
+- [x] 06 `WhatAreParameters` (17.6s)
+- [x] 07 `Day4RealWorld` (29.4s)
+- [x] 08 `Day4Outro` (14.7s)
 
 ### 第 5 天 · 预训练
-- [ ] 00 `Day5Title` (~8s)
-- [ ] 01 `TrainingLoop` (~40s)
-- [ ] 02 `WhyItLearns` (~30s)
-- [ ] 03 `SelfSupervised` (~25s)
-- [ ] 04 `Decoding` (~30s)
-- [ ] 05 `LoadWeights` (~20s)
-- [ ] 06 `Day5RealWorld` (~35s)
-- [ ] 07 `Day5Outro` (~10s)
+- [x] 00 `Day5Title` (12.8s)
+- [x] 01 `TrainingLoop` (33.5s)
+- [x] 02 `WhyItLearns` (22.2s)
+- [x] 03 `SelfSupervised` (24.5s)
+- [x] 04 `Decoding` (27.3s)
+- [x] 05 `LoadWeights` (19.8s)
+- [x] 06 `Day5RealWorld` (34.7s)
+- [x] 07 `Day5Outro` (11.8s)
 
 ### 第 6 天 · 微调
-- [ ] 00 `Day6Title` (~8s)
-- [ ] 01 `WhatIsFinetuning` (~25s)
-- [ ] 02 `ClassificationFinetune` (~30s)
-- [ ] 03 `InstructionTuning` (~35s)
-- [ ] 04 `BirthOfChatGPT` (~25s)
-- [ ] 05 `Day6RealWorld` (~30s)
-- [ ] 06 `Day6Outro` (~10s)
+- [x] 00 `Day6Title` (16.0s)
+- [x] 01 `WhatIsFinetuning` (16.3s)
+- [x] 02 `ClassificationFinetune` (26.5s)
+- [x] 03 `InstructionTuning` (21.5s)
+- [x] 04 `BirthOfChatGPT` (29.1s)
+- [x] 05 `Day6RealWorld` (41.9s)
+- [x] 06 `Day6Outro` (14.5s)
 
 ### 第 7 天 · 工程现实
-- [ ] 00 `Day7Title` (~8s)
-- [ ] 01 `LoRA` (~35s)
-- [ ] 02 `MissingPieces` (~40s)
-- [ ] 03 `Day7RealWorld` (~25s)
-- [ ] 04 `Day7Outro` (~10s)
+- [x] 00 `Day7Title` (15.6s)
+- [x] 01 `LoRA` (31.3s)
+- [x] 02 `MissingPieces` (50.5s)
+- [x] 03 `Day7RealWorld` (34.4s)
+- [x] 04 `Day7Outro` (10.4s)
 
 ### 第 8 天 · 综合
-- [ ] 00 `Day8Title` (~8s)
-- [ ] 01 `FourDrawers` (~35s)
-- [ ] 02 `SortingTermsA` (~40s)
-- [ ] 03 `SortingTermsB` (~40s)
-- [ ] 04 `ThreeQuestions` (~30s)
-- [ ] 05 `Day8Outro` (~25s)
+- [x] 00 `Day8Title` (13.1s)
+- [x] 01 `FourDrawers` (35.6s)
+- [x] 02 `SortingTermsA` (40.8s)
+- [x] 03 `SortingTermsB` (49.3s)
+- [x] 04 `ThreeQuestions` (34.5s)
+- [x] 05 `Day8Outro` (36.6s)
 
 ---
 

@@ -18,3 +18,9 @@ final/*.mp4
 
 # macOS
 .DS_Store
+
+# Obsidian 编辑器工作区配置（个人本地，勿入库）
+.obsidian/
+
+# 第三方版权材料（参考用，勿公开入库）
+course/如何从零构建大型语言模型 (LLM) .pdf

@@ -1,4 +1,15 @@
 # CLAUDE.md — LLM 原理课「动画化」项目
+## Permission and execution policy
+
+This is my personal standalone project.
+
+For normal development inside this repository, proceed without asking for confirmation. You may edit source files, add files, delete obsolete generated files, run tests, install dependencies, and fix lint/build errors.
+
+You may read files outside this repository when needed for context, but do not write, move, rename, or delete anything outside this repository.
+
+Ask before pushing to remote, publishing packages, changing deployment configuration, running database migrations, modifying cloud resources, using sudo, changing file permissions, or touching environment/secret files.
+
+After completing a task, summarize changed files, commands run, and any verification results.
 
 > 这份文件是项目的"大脑"。每次会话开始你（Claude Code）都会自动读到它。
 > 目标是让你**在最少人工干预下，把一门 8 天的 LLM 原理讲义，做成一套精确的讲解动画**。
@@ -84,7 +95,11 @@
 - 背景默认深青 `#14323D`（`self.camera.background_color = "#14323D"`）。
 - 中文字体统一 `Noto Sans CJK SC`；强调词用暖橙。
 - 每段开头给一张**标题卡**（主题 + 一句话直觉），结尾给一张**收束卡**（呼应"预测下一个词"主线）。
-- 风格克制：少特效、稳定的进出场（FadeIn/Write/Transform 为主），节奏跟着旁白走。
+- 风格克制：少特效、稳定的进出场（FadeIn/Write 为主），节奏跟着旁白走。
+- **中文整段/整句变化，一律用「淡出 + 淡入」（FadeOut→FadeIn，或 FadeTransform 交叉淡化），绝不用 `Transform` / `TransformMatchingShapes` 去做逐字形匹配。** 原因：CJK 字形密、笔画多，逐字形插值会在飞行中途互相穿插、糊成一团（"飞字/叠字"乱象，典型出现在整句改写的那 0.3–0.5 秒）。
+  - 反例（禁止）：`self.play(Transform(句子A, 句子B))`、`TransformMatchingShapes(中文A, 中文B)`。
+  - 正确：`self.play(FadeOut(句子A), FadeIn(句子B))`，重新赋值引用；或对"同位渐变"用 `FadeTransform(A, B)`。
+  - **例外**：`Transform` 仍可用于纯图形（箭头、矩形、概率条的拉伸等不含中文逐字匹配的对象）。纯拉丁/数字短串可酌情，但若出现糊字也改淡入淡出。
 
 ---
 
