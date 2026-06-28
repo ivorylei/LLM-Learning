@@ -1,0 +1,100 @@
+# MkDocs Material config for the deep code-walkthrough course.
+# Source markdown lives in course/deep/ (single source of truth).
+# Build:   mkdocs build           -> outputs to ./site/
+# Preview: mkdocs serve           -> http://127.0.0.1:8000/
+#
+# For publishing as a subpath of footballplayatlas.com (e.g. /deep/), build with
+#   mkdocs build -d "/Users/zouyuan/football Atlas/public/deep"
+# and set site_url accordingly (see deploy notes in course/deep/_overview.md).
+
+site_name: 从零理解大语言模型 · 代码精讲
+site_description: 跟着《从零构建大语言模型》逐章读懂每段代码、并能自己改——配套 8 天概念课的深化册
+site_author: Eason
+# 发布为 footballplayatlas.com 的子路径 /deep/（构建产物进 football Atlas 的 public/deep）
+site_url: https://footballplayatlas.com/deep/
+docs_dir: course/deep
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: zh
+  palette:
+    # 深色（与品牌深青一致）默认
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切换到浅色
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到深色
+  font:
+    text: Noto Sans SC
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+extra_css:
+  - assets/llm-brand.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+# _overview.md 是项目内部的进度看板，不发布到学习站点
+exclude_docs: |
+  _overview.md
+  assets/*.py
+
+nav:
+  - 开始这里: index.md
+  - 第0章 · Python/PyTorch 加油站: ch00_python_pytorch.md
+  - 第1章 · 大地图（代码层）: ch01_overview.md
+  - 第2章 · 文字变数字: ch02_text_data.md
+  - 第3章 · 注意力机制 ★: ch03_attention.md
+  - 第4章 · 拼装 GPT: ch04_gpt.md
+  - 第5章 · 预训练: ch05_pretrain.md
+  - 第6章 · 分类微调: ch06_classify.md
+  - 第7章 · 指令微调: ch07_instruct.md
+  - 附录D · 训练技巧: appD_training_tricks.md
+  - 附录E · LoRA: appE_lora.md
+  - 第8章 · 综合：看懂整个 AI 世界: ch08_synthesis.md

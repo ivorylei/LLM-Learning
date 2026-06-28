@@ -24,3 +24,6 @@ final/*.mp4
 
 # 第三方版权材料（参考用，勿公开入库）
 course/如何从零构建大型语言模型 (LLM) .pdf
+
+# MkDocs build output
+site/

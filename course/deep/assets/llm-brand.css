@@ -1,0 +1,43 @@
+/* 品牌配色：与课程动画一致（深青底 + 暖橙强调），覆盖 Material 主题色。
+   配色来源见 CLAUDE.md 第 6 节视觉风格指南。 */
+
+:root {
+  --llm-bg-deep: #14323D;     /* 主背景·深青 */
+  --llm-text:    #EEF3F4;     /* 浅文字 */
+  --llm-accent:  #C2683A;     /* 暖橙·强调 */
+  --llm-green:   #4F8F7B;     /* 正向·绿 */
+  --llm-teal:    #7FC6C0;     /* 次要·浅青 */
+}
+
+/* 浅色主题：主色用浅青、强调用暖橙 */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #1C4A59;
+  --md-primary-fg-color--light: #2E6275;
+  --md-primary-fg-color--dark:  #14323D;
+  --md-accent-fg-color:         #C2683A;
+}
+
+/* 深色主题：背景压成品牌深青，强调暖橙 */
+[data-md-color-scheme="slate"] {
+  --md-hue: 200;
+  --md-primary-fg-color:  #14323D;
+  --md-accent-fg-color:   #C2683A;
+  --md-default-bg-color:  #102832;
+  --md-typeset-a-color:   #7FC6C0;
+}
+
+/* 行内代码与链接的强调感 */
+.md-typeset code { border-radius: 4px; }
+
+/* 让 🐍 加油站 / 🔧 亲手改 这类引用块更像"提示卡" */
+.md-typeset blockquote {
+  border-left: 3px solid var(--llm-teal);
+  background: color-mix(in srgb, var(--llm-teal) 8%, transparent);
+  border-radius: 0 6px 6px 0;
+}
+
+/* 标题层级里的 emoji 不要被 twemoji 压太小 */
+.md-typeset h3 img.twemoji { width: 1.05em; height: 1.05em; }
+
+/* 表格更紧凑可读 */
+.md-typeset table:not([class]) { font-size: 0.78rem; }
